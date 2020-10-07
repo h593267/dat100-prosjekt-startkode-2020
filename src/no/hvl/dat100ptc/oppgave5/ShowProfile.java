@@ -7,7 +7,7 @@ import no.hvl.dat100ptc.oppgave2.GPSData;
 import no.hvl.dat100ptc.oppgave2.GPSDataConverter;
 import no.hvl.dat100ptc.oppgave2.GPSDataFileReader;
 import no.hvl.dat100ptc.oppgave4.GPSComputer;
-
+import java.lang.Math;
 import javax.swing.JOptionPane;
 
 public class ShowProfile extends EasyGraphics {
@@ -44,14 +44,19 @@ public class ShowProfile extends EasyGraphics {
 	public void showHeightProfile(int ybase) {
 
 		// ybase indicates the position on the y-axis where the columns should start
-	
+		setColor(0, 0, 255);
 		int x = MARGIN,y;
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-	
-		// TODO - SLUTT
+		int ytop;
+		
+		for (int i = 0; i < gpspoints.length; i++) {
+			ytop = ybase - (int) Math.round(gpspoints[i].getElevation());
+			if (ytop < 0) {
+				ytop = ybase;
+			}
+			drawLine(x,ybase,x,ytop);
+			x+=2;
+		}
+		
 	}
 
 }

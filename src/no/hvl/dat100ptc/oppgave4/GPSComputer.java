@@ -165,7 +165,7 @@ public class GPSComputer {
 		
 		System.out.print("Average speed  :");
 		System.out.printf("%11s", GPSUtils.formatDouble(averageSpeed()));
-		System.out.println(" km");
+		System.out.println(" km/t");
 		
 		System.out.print("Energy         :");
 		System.out.printf("%11s", GPSUtils.formatDouble(totalKcal(WEIGHT)));

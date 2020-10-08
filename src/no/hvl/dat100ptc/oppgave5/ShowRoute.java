@@ -52,24 +52,33 @@ public class ShowRoute extends EasyGraphics {
 
 	// antall y-pixels per breddegrad
 	public double ystep() {
-	
-		double ystep;
 		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
+		double maxlon = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
+		double minlon = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
 
-		// TODO - SLUTT
+		double ystep = MAPYSIZE / (Math.abs(maxlon - minlon)); 
+
+		return ystep;
 		
 	}
 
 	public void showRouteMap(int ybase) {
-
-		// TODO - START
+		setColor(0,255,0);
 		
-		throw new UnsupportedOperationException(TODO.method());
+		double[] latitudes = GPSUtils.getLatitudes(gpspoints);
+		double[] longitudes = GPSUtils.getLongitudes(gpspoints);
+		int x;
+		int y;
 		
-		// TODO - SLUTT
+		for (int i = 0;i < gpspoints.length; i++) {
+			x = (int) Math.round((longitudes[i]-GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints)))*xstep()); //tar lengdegrad og trekker fra minste lengdegrad deretter ganger med antall piksler per
+			y = ybase - (int) Math.round(((latitudes[i]-GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints)))*ystep()));
+			fillCircle(x,y,4);
+			
+			System.out.println(x);
+			System.out.println(y);
+		}
+		
 	}
 
 	public void showStatistics() {
@@ -78,12 +87,27 @@ public class ShowRoute extends EasyGraphics {
 
 		setColor(0,0,0);
 		setFont("Courier",12);
+		double WEIGHT = 80.0;
+		int y = TEXTDISTANCE;
 		
-		// TODO - START
+		String totalTime = "Total time     :" + String.format("%11s", GPSUtils.formatTime(gpscomputer.totalTime()));
+		String totalDistance = "Total distance :" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.totalDistance())) + " km";
+		String totalElevation = "Total elevation:" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.totalElevation())) + " m";
+		String maxSpeed = "Max speed      :" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.maxSpeed())) + " km/t";
+		String averageSpeed = "Average speed  :" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.averageSpeed())) + " km";
+		String energy = "Energy         :" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.totalKcal(WEIGHT))) + " kcal";
 		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - SLUTT;
+		drawString(totalTime,TEXTDISTANCE,y);
+		y += TEXTDISTANCE;
+		drawString(totalDistance,TEXTDISTANCE,y);
+		y += TEXTDISTANCE;
+		drawString(totalElevation,TEXTDISTANCE,y);
+		y += TEXTDISTANCE;
+		drawString(maxSpeed,TEXTDISTANCE,y);
+		y += TEXTDISTANCE;
+		drawString(averageSpeed,TEXTDISTANCE,y);
+		y += TEXTDISTANCE;
+		drawString(energy,TEXTDISTANCE,y);
 	}
 
 }

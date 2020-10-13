@@ -54,7 +54,7 @@ public class ShowProfile extends EasyGraphics {
 				ytop = ybase;
 			}
 			drawLine(x,ybase,x,ytop);
-			x+=2;
+			x+=2; //visste ikke hvor bredt mellom
 		}
 		
 	}

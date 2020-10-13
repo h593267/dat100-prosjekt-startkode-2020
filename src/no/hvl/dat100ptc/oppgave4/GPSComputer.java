@@ -154,8 +154,8 @@ public class GPSComputer {
 		System.out.println("");
 		
 		System.out.print("Total distance :");
-		System.out.printf("%11s", GPSUtils.formatDouble(totalDistance()));
-		System.out.println(" km");
+		System.out.printf("%11s", GPSUtils.formatDouble(totalDistance()/1000));
+		System.out.println("km");
 		
 		System.out.print("Total elevation:");
 		System.out.printf("%11s", GPSUtils.formatDouble(totalElevation()));

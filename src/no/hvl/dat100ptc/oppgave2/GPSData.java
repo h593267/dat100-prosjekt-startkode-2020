@@ -32,15 +32,10 @@ public class GPSData {
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
 
 		GPSPoint gpspoint;
-		
-		int antallInkrement = antall;
 		gpspoint = GPSDataConverter.convert(time,latitude,longitude,elevation);
-		insertGPS(gpspoint);
-		if (antallInkrement != antall) {
-			return true;
-		} else {
-			return false;
-		}
+		boolean inserted = insertGPS(gpspoint);
+		return inserted;
+		
 		
 	}
 

@@ -89,6 +89,8 @@ public class GPSComputer {
 		
 	}
 
+
+
 	/*
 	 * bicycling, <10 mph, leisure, to work or for pleasure 4.0 bicycling,
 	 * general 8.0 bicycling, 10-11.9 mph, leisure, slow, light effort 6.0
@@ -174,5 +176,6 @@ public class GPSComputer {
 		System.out.println("==============================================");
 
 	}
+	
 
 }

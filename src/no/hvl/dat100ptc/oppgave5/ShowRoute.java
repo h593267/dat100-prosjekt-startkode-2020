@@ -12,7 +12,7 @@ public class ShowRoute extends EasyGraphics {
 
 	private static int MARGIN = 50;
 	private static int MAPXSIZE = 800;
-	private static int MAPYSIZE = 800;
+	private static int MAPYSIZE = 600; //endret for å tilpasse min skjerm
 
 	private GPSPoint[] gpspoints;
 	private GPSComputer gpscomputer;
@@ -91,7 +91,7 @@ public class ShowRoute extends EasyGraphics {
 		int y = TEXTDISTANCE;
 		
 		String totalTime = "Total time     :" + String.format("%11s", GPSUtils.formatTime(gpscomputer.totalTime()));
-		String totalDistance = "Total distance :" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.totalDistance())) + " km";
+		String totalDistance = "Total distance :" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.totalDistance()/1000)) + " km";
 		String totalElevation = "Total elevation:" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.totalElevation())) + " m";
 		String maxSpeed = "Max speed      :" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.maxSpeed())) + " km/t";
 		String averageSpeed = "Average speed  :" + String.format("%11s", GPSUtils.formatDouble(gpscomputer.averageSpeed())) + " km";
